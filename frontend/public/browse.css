@@ -88,3 +88,35 @@ main {
     background-color: #0056b3; /* Darker blue on hover */
 }
 
+#search-results {
+    width: 100%;
+}
+#search-top-bar {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+ul {
+    list-style-type: none; /* Removes the bullet points */
+    padding: 0; /* Removes default padding from the list */
+    margin-left: 20%;
+    display: inline-block;
+    width: 40%;
+}
+
+li {
+    display: block;
+    padding: 10px; /* Adds space inside each box */
+    margin: 5px 0; /* Adds space between the boxes */
+    background-color: #f0f0f0; /* Light gray background */
+    border: 1px solid #ccc; /* Adds a border around each item */
+    text-align: center; /* Centers text inside the boxes */
+    border-radius: 5px; /* Makes the corners rounded */
+    
+}
+
+course-element {
+    outline: none; /* Removes the outline from the course-element */
+}
+
