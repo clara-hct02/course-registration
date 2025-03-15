@@ -4,6 +4,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { User, UserDocument } from './User.schema';
+import { CourseList } from '../CourseList/CourseList.schema';
 
 @Injectable()
 export class UserService {
@@ -17,36 +18,27 @@ export class UserService {
   async findAll(): Promise<UserDocument[]> {
     return this.userModel
       .find()
-      .populate('registrations')
-      .populate('worklists')
+      .select('-password')
+      .populate('CourseList')
       .exec();
   }
 
   async findById(id: string): Promise<UserDocument | null> {
-    return this.userModel
-      .findById(id)
-      .populate('registrations')
-      .populate('worklists')
-      .exec();
+    return this.userModel.findById(id).populate('CourseList').exec();
   }
 
   async findByEmail(email: string): Promise<UserDocument | null> {
-    return this.userModel
-      .findOne({ email })
-      .populate('registrations')
-      .populate('worklists')
-      .exec();
+    return this.userModel.findOne({ email }).populate('CourseList').exec();
   }
 
   async update(id: string, user: User): Promise<UserDocument | null> {
     return this.userModel
       .findByIdAndUpdate(id, user, { new: true })
-      .populate('registrations')
-      .populate('worklists')
+      .populate('CourseList')
       .exec();
   }
 
   async remove(id: string): Promise<UserDocument | null> {
-    return this.userModel.findByIdAndDelete(id).exec();
+    return this.userModel.findByIdAndDelete(id).populate('CourseList').exec();
   }
 }
