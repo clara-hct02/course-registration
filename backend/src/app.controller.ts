@@ -11,6 +11,30 @@ export class AppController {
         return this.appService.getHello();
     }
 
+    //REQUEST: various filters. currently by dept and yearlevel
+        //maybe add some sort of 'default dept' and 'default year'
+    //RETURN: list of course objects
+    @Get('courses')
+    getCourses(@Param() params: any): Object[] {
+        var exampleParams = {
+            dept: 'AAAA',
+            yearLevel: 300,
+        }
+        return [];
+    }
+
+    //RETURN: ???????????? some sort of information????
+    @Get('courses/:courseid/sections')
+    getSectionsForCourse(@Param() params: any): Object[] {
+        return [];
+    }
+
+    //RETURN: information on a given section
+    @Get('sections/:sectionid')
+    getSectionInformation(@Param() params: any): Object {
+        return {};
+    }
+
     //RETURN: list of ids and names for the user's worklists
     @Get(':userid/getSavedScheduleIDs')
     getSavedScheduleIDs(@Param() params: any): Object[] {
