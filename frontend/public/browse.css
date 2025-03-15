@@ -6,6 +6,10 @@ body {
     height: 100vh; /* Full viewport height */
 }
 
+main {
+    width: 100%;
+}
+
 .search-container {
     display: flex;
     align-items: center;
@@ -18,14 +22,15 @@ body {
 }
 
 #search-div {
+    width: 100%;
     display: flex;
     align-items: flex-start;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 /* Sidebar (Left Section) */
 #search-filters {
-    width: 30%; /* Adjust width as needed */
+    margin-right: auto;
     background-color: #f8f9fa; /* Light gray background */
     padding: 20px;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for separation */
