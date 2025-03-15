@@ -4,12 +4,14 @@ import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Course, CourseSchema } from './Course.schema';
 import { CourseService } from './Course.service';
+import { CourseController } from './Course.controller';
 
 @Module({
   imports: [
     MongooseModule.forFeature([{ name: Course.name, schema: CourseSchema }]),
   ],
   providers: [CourseService],
-  exports: [CourseService], // Export the service if you need to use it in other modules
+  controllers: [CourseController],
+  exports: [CourseService],
 })
 export class CourseModule {}
