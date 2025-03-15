@@ -1,45 +1,100 @@
+/* General Layout */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    display: flex; /* Use flexbox to create a horizontal layout */
-    height: 100vh; /* Full viewport height */
+    display: flex;
+    height: 100vh;
 }
 
 main {
     width: 100%;
 }
 
+#search-div {
+    display: flex;
+    flex-direction: row; /* Stack the sections vertically */
+    align-items: flex-start;
+    height: 100%;
+    padding: 20px;
+    gap: 20px; /* Add spacing between sections */
+}
+
+/* Search Bar (Top Section) */
+#search-top-bar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 .search-container {
     display: flex;
     align-items: center;
-    border: 2px solid #ccc; /* Border around container */
-    border-radius: 25px; /* Rounded corners for container */
+    border: 2px solid #ccc;
+    border-radius: 25px;
     padding: 5px;
-    width: 320px; /* Adjust the width as needed */
-    background-color: #fff; /* Optional: background color */
+    width: 320px;
+    background-color: #fff;
+    gap: 10px;
     box-sizing: border-box;
+    margin-bottom: 5%;
 }
 
-#search-div {
+.search-container input[type="text"] {
+    width: 70%;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    outline: none;
+}
+
+#search-box-button {
+    background-color: transparent;
+    border: none;
+    padding-right: 10px;
+    outline: none;
+    font: inherit;
+    cursor: pointer;
+}
+
+/* Search Results (Below Search Bar) */
+#search-results {
     width: 100%;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-around;
 }
 
-/* Sidebar (Left Section) */
-#search-filters {
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 5%;
+    margin-left: 10%;
     margin-right: auto;
-    background-color: #f8f9fa; /* Light gray background */
+    display: inline-block;
+    width: 60%;
+}
+
+li {
+    display: block;
+    padding: 10px;
+    margin: 5px 0;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    text-align: center;
+    border-radius: 5px;
+}
+
+/* Sidebar Filters (Bottom Section) */
+#search-filters {
+    background-color: #f8f9fa;
     padding: 20px;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for separation */
-    overflow-y: auto; /* Enable scrolling if content overflows */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 320px;
+    align-self: flex-start;
+    border-radius: 10px;
 }
 
 #search-filters h2 {
     margin-top: 0;
-    color: #333;
 }
 
 .filter {
@@ -51,72 +106,3 @@ main {
     margin-bottom: 5px;
     font-weight: bold;
 }
-
-/* Main Content (Right Section) */
-.main-content {
-    flex: 1; /* Take up the remaining space */
-    padding: 20px;
-    background-color: #ffffff;
-}
-
-.search-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px; /* Spacing between input and button */
-}
-
-.search-container input[type="text"] {
-    width: 70%; /* Adjust width as needed */
-    padding: 10px;
-    font-size: 16px;
-    border: none;
-    
-}
-
-#search-box-button{
-    background-color: transparent; /* Makes the background invisible */
-    border: none;                 /* Removes the border */
-    padding-right: 10px;                  /* Removes any padding */
-    outline: none;                /* Removes focus outline */
-    color: inherit;               /* Keeps the text color as normal */
-    font: inherit;                /* Ensures the text looks like normal text */
-    cursor: pointer;              /* Keeps the clickable cursor */
-}
-
-.search-container button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-}
-
-#search-results {
-    width: 100%;
-}
-#search-top-bar {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-}
-
-ul {
-    list-style-type: none; /* Removes the bullet points */
-    padding: 0; /* Removes default padding from the list */
-    margin-left: 20%;
-    display: inline-block;
-    width: 40%;
-}
-
-li {
-    display: block;
-    padding: 10px; /* Adds space inside each box */
-    margin: 5px 0; /* Adds space between the boxes */
-    background-color: #f0f0f0; /* Light gray background */
-    border: 1px solid #ccc; /* Adds a border around each item */
-    text-align: center; /* Centers text inside the boxes */
-    border-radius: 5px; /* Makes the corners rounded */
-    
-}
-
-course-element {
-    outline: none; /* Removes the outline from the course-element */
-}
-
