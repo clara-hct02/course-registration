@@ -7,12 +7,39 @@
     <title>My Website</title>
     <link rel="stylesheet" href="style.css">
     <script src="index.js"></script>
+    <script src="navbar.js" type="text/javascript" defer></script>
+    <script src="timetable.js" type="text/javascript" defer></script>
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
   </head>
   <body>
     <main>
-        <h1>Welcome to My Website</h1>  
+        <navbar-component></navbar-component>
+        <div class="title">
+            <h1> Welcome </h1>
+            <h2> (Student Name) </h2>
+        </div>
+        <h3> Registered Courses </h3>
+        
+    
+        <table id="timetable">
+            <thead>
+                <tr>
+                    <th>Hours</th>
+                    <th>Monday</th>
+                    <th>Tuesday</th>
+                    <th>Wednesday</th>
+                    <th>Thursday</th>
+                    <th>Friday</th>
+                    <th>Saturday</th>
+                    <th>Sunday</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Timetable rows will be generated dynamically -->
+            </tbody>
+        </table>
     </main>
+    
   </body>
   
 </html>
