@@ -13,8 +13,31 @@
   <body>
     <main>
         <navbar-component></navbar-component>
+        <form id="choose-schedule">
+          <label>Saved Schedule: </label>
+          <select name="schedule" id="schedule-select">
+          </select>
+          <button type="submit"> Submit </button>
+        </form> 
+        <br>
+        <table id="timetable">
+          <thead>
+              <tr>
+                  <th>Hours</th>
+                  <th>Monday</th>
+                  <th>Tuesday</th>
+                  <th>Wednesday</th>
+                  <th>Thursday</th>
+                  <th>Friday</th>
+                  <th>Saturday</th>
+                  <th>Sunday</th>
+              </tr>
+          </thead>
+          <tbody>
+              <!-- Timetable rows will be generated dynamically -->
+          </tbody>
+        </table>
     </main>
-    
   </body>
   
 </html>
