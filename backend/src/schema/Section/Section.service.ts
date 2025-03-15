@@ -18,17 +18,16 @@ export class SectionService {
   }
 
   async findAll(): Promise<SectionDocument[]> {
-    return this.sectionModel.find().populate('course').exec();
+    return this.sectionModel.find().exec();
   }
 
   async findById(id: string): Promise<SectionDocument | null> {
-    return this.sectionModel.findById(id).populate('course').exec();
+    return this.sectionModel.findById(id).exec();
   }
 
   async update(id: string, section: Section): Promise<SectionDocument | null> {
     return this.sectionModel
       .findByIdAndUpdate(id, section, { new: true })
-      .populate('course')
       .exec();
   }
 
@@ -37,17 +36,11 @@ export class SectionService {
   }
 
   async findByCourse(courseId: string): Promise<SectionDocument[]> {
-    return this.sectionModel
-      .find({ course: courseId })
-      .populate('course')
-      .exec();
+    return this.sectionModel.find({ course: courseId }).exec();
   }
 
   async findBySectionCode(sectionCode: string): Promise<SectionDocument[]> {
-    return this.sectionModel
-      .find({ sectionCode: sectionCode })
-      .populate('course')
-      .exec();
+    return this.sectionModel.find({ sectionCode: sectionCode }).exec();
   }
 
   async findByYear(year: number): Promise<SectionDocument[]> {
@@ -55,10 +48,7 @@ export class SectionService {
   }
 
   async findBySession(session: string): Promise<SectionDocument[]> {
-    return this.sectionModel
-      .find({ session: session })
-      .populate('course')
-      .exec();
+    return this.sectionModel.find({ session: session }).exec();
   }
 
   async findByProf(prof: string): Promise<SectionDocument[]> {
@@ -68,17 +58,11 @@ export class SectionService {
   async findByCapacityGreaterThan(
     capacity: number,
   ): Promise<SectionDocument[]> {
-    return this.sectionModel
-      .find({ capacity: { $gt: capacity } })
-      .populate('course')
-      .exec();
+    return this.sectionModel.find({ capacity: { $gt: capacity } }).exec();
   }
 
   async findByCapacityLessThan(capacity: number): Promise<SectionDocument[]> {
-    return this.sectionModel
-      .find({ capacity: { $lt: capacity } })
-      .populate('course')
-      .exec();
+    return this.sectionModel.find({ capacity: { $lt: capacity } }).exec();
   }
 
   async findByCurrentRegisteredGreaterThan(
@@ -86,7 +70,6 @@ export class SectionService {
   ): Promise<SectionDocument[]> {
     return this.sectionModel
       .find({ currentRegistered: { $gt: currentRegistered } })
-      .populate('course')
       .exec();
   }
 
@@ -95,14 +78,10 @@ export class SectionService {
   ): Promise<SectionDocument[]> {
     return this.sectionModel
       .find({ currentRegistered: { $lt: currentRegistered } })
-      .populate('course')
       .exec();
   }
 
   async findByWaitlist(waitlist: boolean): Promise<SectionDocument[]> {
-    return this.sectionModel
-      .find({ waitlist: waitlist })
-      .populate('course')
-      .exec();
+    return this.sectionModel.find({ waitlist: waitlist }).exec();
   }
 }

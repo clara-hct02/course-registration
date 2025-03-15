@@ -18,11 +18,11 @@ export class CourseListService {
   }
 
   async findAll(): Promise<CourseListDocument[]> {
-    return this.courseListModel.find().populate('courses').exec();
+    return this.courseListModel.find().exec();
   }
 
   async findById(id: string): Promise<CourseListDocument | null> {
-    return this.courseListModel.findById(id).populate('courses').exec();
+    return this.courseListModel.findById(id).exec();
   }
 
   async update(
@@ -31,7 +31,6 @@ export class CourseListService {
   ): Promise<CourseListDocument | null> {
     return this.courseListModel
       .findByIdAndUpdate(id, courseList, { new: true })
-      .populate('courses')
       .exec();
   }
 
@@ -43,16 +42,10 @@ export class CourseListService {
     year: number,
     session: string,
   ): Promise<CourseListDocument[]> {
-    return this.courseListModel
-      .find({ year, session })
-      .populate('courses')
-      .exec();
+    return this.courseListModel.find({ year, session }).exec();
   }
 
   async findByIsReg(isReg: boolean): Promise<CourseListDocument[]> {
-    return this.courseListModel
-      .find({ isReg: isReg })
-      .populate('courses')
-      .exec();
+    return this.courseListModel.find({ isReg: isReg }).exec();
   }
 }
