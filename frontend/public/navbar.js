@@ -97,8 +97,9 @@ class Navbar extends HTMLElement {
   
         <div class="topnav">
           <a class="active" href="index.html">Home</a>
-          <a href="">Saved Schedules</a>
-          <a href="">Degree Navigator</a>
+          <a href="saved.html">Saved Schedules</a>
+          <a href="browse.html">Find Courses</a>
+          <a href="navigator.html">Degree Navigator</a>
         </div>
       `
     }
