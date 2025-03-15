@@ -8,7 +8,7 @@ let sampleData =  [
     {name:"Hybe 400", sections:[423,456,473]},
 ]
 
-let sampleWorklists = [{worklistName: "sample1", courses:[]},{worklistName: "testingthis", courses:[]}]
+let sampleWorklists = [{worklistName: "sample1", courses:[{name: "Gamer 101", section: 100}]},{worklistName: "testingthis", courses:[]}]
 //List of Lists of Courses
 let worklists = []
 let currentWorklists = sampleWorklists //temporary
@@ -60,44 +60,47 @@ let showToast = (message) => {
     }, 3000);
   }
 
-let updateWorklist = () => {
+  let updateWorklist = () => {
     //worklist they chose
-    let worklistName = worklistOptions.value
+    let worklistName = worklistOptions.value;
 
     let courseElements = courseList.querySelectorAll('course-element');
+    let currentWorklist = {};
+    currentWorklists.forEach(worklist => {
+        if (worklist.worklistName == worklistName) {
+            currentWorklist = worklist;
+        }
+    });
 
-    let pickedCourses = []
-    courseElements.forEach(courseElement => {
+    let pickedCourses = [];
+    for (let courseElement of courseElements) { // Use a for...of loop to enable early returns
         const selectElement = courseElement.getSelectElement(); // Access the <select> element
         const selectedValue = selectElement.value; // Get the value of the selected option
+        const courseName = courseElement.getAttribute('course-name');
         const selectedText = selectElement.options[selectElement.selectedIndex].text; // Get the text of the selected option
 
         if (selectedValue != "default") {
-
-            const exists = pickedCourses.some(course => course.name === newCourse.name);
+            const exists = currentWorklist.courses.some(course => course.name === courseName);
 
             if (!exists) {
                 let pickedCourseInfo = {
-                    name: courseElement.getAttribute('course-name'),
+                    name: courseName,
                     section: selectedValue
-                }
-                
-                pickedCourses.push(pickedCourseInfo)
+                };
+                pickedCourses.push(pickedCourseInfo);
+            } else {
+                showToast(`${courseName} is already in the worklist`); //Modified to show course name.
+                return; // Immediately stop the function
             }
         }
-    })
+    }
 
-    //find then combine the lists in the worklist
-    currentWorklists.forEach(worklist => {
-        if (worklist.worklistName == worklistName) {
-            worklist.courses.push(...pickedCourses)
-            console.log(worklist.courses)
-            showToast(`Updated ${worklistName}!`)
-        }
-    })
-
-    
-}
+    if (Object.keys(currentWorklist).length !== 0) { // Check if currentWorklist is not empty object.
+        currentWorklist.courses.push(...pickedCourses);
+        showToast(`Updated ${worklistName}!`);
+        console.log(currentWorklist);
+    }
+};
 
 
 
