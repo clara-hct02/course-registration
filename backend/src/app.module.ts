@@ -30,6 +30,11 @@ import { UserModule } from './schema/User/User.module';
         // other options...
       }),
     }),
+    // UserModule,
+    // SectionModule,
+    // RecordModule,
+    // CourseListModule,
+    // CourseModule,
   ],
   controllers: [AppController],
   providers: [AppService],
