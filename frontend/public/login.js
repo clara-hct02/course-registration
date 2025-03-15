@@ -4,13 +4,10 @@ async function login(event) {
     var user = document.getElementById('name').value;
     var password = document.getElementById('password').value;
 
-    console.log(user);
-    console.log(password);
-
-    const response = await fetch("/login", {
+    const response = await fetch("http://localhost:3000/users/login", {
         method: 'POST',
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username: user, password: password }),
+        body: JSON.stringify({ email: user, password: password }),
     });
     const data = await response.json();
     window.location.href = "/";
