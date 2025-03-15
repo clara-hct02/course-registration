@@ -1,6 +1,7 @@
 async function getSavedScheduleIDs() {
     const response = await fetch('/getSavedScheduleIDs', {
-      method: 'GET'
+      method: 'POST',
+      body: JSON.stringify({userid: id})
     })
 
     const myobject = await response.json();
@@ -13,12 +14,18 @@ async function getSavedScheduleIDs() {
 }
 
 async function getSavedSchedule() {
-    var scheduleID = document.getElementById("schedule-select");
-    
-    const response = await fetch('/getSavedSchedule' + scheduleID, {
-        method: 'GET'
-      })
+    var scheduleName = document.getElementById("schedule-select");
+
+    const response = await fetch('/getSavedSchedule', {
+      method: 'POST',
+      body: JSON.stringify({userid: id, name: scheduleName})
+    })
   
       const myobject = await response.json();
       const select = document.getElementById('schedule-select');
+}
+
+window.onload = function() {
+    getSavedScheduleIDs();
+    document.getElementById().addEventListener();
 }
