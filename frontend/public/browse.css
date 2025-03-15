@@ -6,6 +6,23 @@ body {
     height: 100vh; /* Full viewport height */
 }
 
+.search-container {
+    display: flex;
+    align-items: center;
+    border: 2px solid #ccc; /* Border around container */
+    border-radius: 25px; /* Rounded corners for container */
+    padding: 5px;
+    width: 320px; /* Adjust the width as needed */
+    background-color: #fff; /* Optional: background color */
+    box-sizing: border-box;
+}
+
+#search-div {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
 /* Sidebar (Left Section) */
 #search-filters {
     width: 30%; /* Adjust width as needed */
@@ -40,7 +57,7 @@ body {
 .search-container {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-between;
     gap: 10px; /* Spacing between input and button */
 }
 
@@ -48,20 +65,21 @@ body {
     width: 70%; /* Adjust width as needed */
     padding: 10px;
     font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    border: none;
+    
 }
 
-.search-container button {
-    padding: 10px 15px;
-    font-size: 16px;
-    color: #ffffff;
-    background-color: #007bff; /* Blue button */
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+#search-box-button{
+    background-color: transparent; /* Makes the background invisible */
+    border: none;                 /* Removes the border */
+    padding-right: 10px;                  /* Removes any padding */
+    outline: none;                /* Removes focus outline */
+    color: inherit;               /* Keeps the text color as normal */
+    font: inherit;                /* Ensures the text looks like normal text */
+    cursor: pointer;              /* Keeps the clickable cursor */
 }
 
 .search-container button:hover {
     background-color: #0056b3; /* Darker blue on hover */
 }
+
