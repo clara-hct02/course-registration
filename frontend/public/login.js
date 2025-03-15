@@ -13,6 +13,7 @@ async function login(event) {
         body: JSON.stringify({ username: user, password: password }),
     });
     const data = await response.json();
+    window.location.href = "/";
 }
 
 window.onload = function() {
