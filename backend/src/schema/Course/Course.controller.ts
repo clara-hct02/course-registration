@@ -8,7 +8,6 @@ import {
   Delete,
   Body,
   Param,
-  Query,
 } from '@nestjs/common';
 import { CourseService } from './Course.service';
 import { Course } from './Course.schema';
@@ -60,5 +59,20 @@ export class CourseController {
   @Get('title/:title')
   async findByTitle(@Param('title') title: string): Promise<Course[]> {
     return this.courseService.findByTitle(title);
+  }
+
+  @Get('yearLevel/:operator/:year')
+  async findByYearLevel(
+    @Param('operator') operator: string, //GT, LT, EQ
+    @Param('year') year: number, //100 - 500?
+  ): Promise<Course[]> {
+      if (operator == "EQ") {
+          return this.courseService.findEqualYearLevel(year);
+      } else if (operator == "GT") {
+          return this.courseService.findGreaterYearLevel(year);
+      } else if (operator == "LT") {
+          return this.courseService.findLesserYearLevel(year);
+      }
+      return [];
   }
 }

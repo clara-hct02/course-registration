@@ -1,6 +1,6 @@
 // course.service.ts
 
-import { Injectable } from '@nestjs/common';
+import {Injectable} from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Course, CourseDocument } from './Course.schema';
@@ -42,5 +42,19 @@ export class CourseService {
 
   async findByTitle(title: string): Promise<Course[]> {
     return this.courseModel.find({ title: title }).exec();
+  }
+
+  async findEqualYearLevel(year: number): Promise<Course[]> {
+      var regexp = new RegExp("^" + year);
+      return this.courseModel.find({couseCode: regexp}).exec();
+  }
+
+  async findGreaterYearLevel(year: number): Promise<Course[]> {
+      var toplimit = year + 99;
+      return this.courseModel.find({courseCode: {"$gt": toplimit.toString()}}).exec();
+  }
+
+  async findLesserYearLevel(year: number): Promise<Course[]> {
+      return this.courseModel.find({courseCode: {"$lt": year.toString()}}).exec();
   }
 }
