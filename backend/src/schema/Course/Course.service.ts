@@ -45,16 +45,18 @@ export class CourseService {
   }
 
   async findEqualYearLevel(year: number): Promise<Course[]> {
-      var regexp = new RegExp("^" + year);
+      var digit = (year - (year % 100)) / 100;
+      var regexp = new RegExp("^" + digit);
       return this.courseModel.find({couseCode: regexp}).exec();
   }
 
   async findGreaterYearLevel(year: number): Promise<Course[]> {
-      var toplimit = year + 99;
-      return this.courseModel.find({courseCode: {"$gt": toplimit.toString()}}).exec();
+      var hundreds = (year - (year % 100)) + 99;
+      return this.courseModel.find({courseCode: {"$gt": hundreds.toString()}}).exec();
   }
 
   async findLesserYearLevel(year: number): Promise<Course[]> {
-      return this.courseModel.find({courseCode: {"$lt": year.toString()}}).exec();
+      var hundreds = (year - (year % 100));
+      return this.courseModel.find({courseCode: {"$lt": hundreds.toString()}}).exec();
   }
 }
