@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>My Website</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="browse.css">
     <script src="index.js"></script>
     <script src="navbar.js" type="text/javascript" defer></script>
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
@@ -13,6 +13,45 @@
   <body>
     <main>
         <navbar-component></navbar-component>
+        <div id="search-div">
+          <div id="search-filters">
+            <h2>Filter Courses</h2>
+            <div class="filter">
+              <!-- Bro idk I didnt go to ubc lmao -->
+                <label for="category">Faculty</label>
+                <select id="category">
+                    <option value="all">All</option>
+                    <option value="science">Science</option>
+                    <option value="arts">Arts</option>
+                    <option value="technology">Technology</option>
+                </select>
+            </div>
+            <div class="filter">
+                <label for="level">Level</label>
+                <select id="level">
+                    <option value="all">All</option>
+                    <option value="100">100</option>
+                    <option value="200">200</option>
+                    <option value="300-400">300-400</option>
+                    <option value="500-600">500-600</option>
+                </select>
+            </div>
+            <div class="filter">
+                <label for="duration">Delivery Mode</label>
+                <select id="duration">
+                    <option value="all">All</option>
+                    <option value="in-person">In-Person</option>
+                    <option value="online">Online</option>
+                    <option value="hybrid">Hybrid</option>
+                    <option value="long">Multi-Access</option>
+                </select>
+            </div>
+          </div>
+          <div class="search-container">
+            <input type="text" class="search-box input" placeholder="Search...">
+            <input type="button" id="search-box-button" value="&#x1F50E;&#xFE0E;"></button> <!-- Magnifying glass -->
+          </div>
+        </div>
     </main>
     
   </body>

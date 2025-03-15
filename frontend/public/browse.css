@@ -1,0 +1,90 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Use flexbox to create a horizontal layout */
+    height: 100vh; /* Full viewport height */
+}
+
+main {
+    width: 100%;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    border: 2px solid #ccc; /* Border around container */
+    border-radius: 25px; /* Rounded corners for container */
+    padding: 5px;
+    width: 320px; /* Adjust the width as needed */
+    background-color: #fff; /* Optional: background color */
+    box-sizing: border-box;
+}
+
+#search-div {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+}
+
+/* Sidebar (Left Section) */
+#search-filters {
+    margin-right: auto;
+    background-color: #f8f9fa; /* Light gray background */
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for separation */
+    overflow-y: auto; /* Enable scrolling if content overflows */
+}
+
+#search-filters h2 {
+    margin-top: 0;
+    color: #333;
+}
+
+.filter {
+    margin-bottom: 15px;
+}
+
+.filter label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* Main Content (Right Section) */
+.main-content {
+    flex: 1; /* Take up the remaining space */
+    padding: 20px;
+    background-color: #ffffff;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px; /* Spacing between input and button */
+}
+
+.search-container input[type="text"] {
+    width: 70%; /* Adjust width as needed */
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    
+}
+
+#search-box-button{
+    background-color: transparent; /* Makes the background invisible */
+    border: none;                 /* Removes the border */
+    padding-right: 10px;                  /* Removes any padding */
+    outline: none;                /* Removes focus outline */
+    color: inherit;               /* Keeps the text color as normal */
+    font: inherit;                /* Ensures the text looks like normal text */
+    cursor: pointer;              /* Keeps the clickable cursor */
+}
+
+.search-container button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
