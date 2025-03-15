@@ -1,15 +1,27 @@
+async function getRegisteredCourses() {
+    const response = await fetch('/getRegisteredCourses', {
+        method: 'GET'
+      })
+
+    const myobject = await response.json();
+    return myobject;
+}
+
+
 // Array of course objects
-const courses = [
-    { name: "Mathematics", day: "Monday", start: "09:00", end: "11:00" },
-    { name: "English", day: "Tuesday", start: "10:00", end: "12:00" },
-    { name: "Science", day: "Wednesday", start: "09:30", end: "10:30" },
-    { name: "History", day: "Thursday", start: "11:00", end: "12:30" },
-    { name: "Physics", day: "Friday", start: "13:00", end: "15:00" }
-];
+// const courses = [
+//     { name: "Mathematics", day: "Monday", start: "09:00", end: "11:00" },
+//     { name: "English", day: "Tuesday", start: "10:00", end: "12:00" },
+//     { name: "Science", day: "Wednesday", start: "09:30", end: "10:30" },
+//     { name: "History", day: "Thursday", start: "11:00", end: "12:30" },
+//     { name: "Physics", day: "Friday", start: "13:00", end: "15:00" }
+// ];
 
 // Generate timetable rows
-function generateTimetable() {
+async function generateTimetable() {
     const timetableBody = document.querySelector("#timetable tbody");
+    const courses = await getRegisteredCourses();
+
     timetableBody.innerHTML = ""; // Clear existing rows
 
     // Create hours (e.g., 8:00 to 18:00 in 30-minute increments)
