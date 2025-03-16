@@ -30,8 +30,8 @@ export class Section {
   @Prop({ type: String })
   prof: string[];
 
-  @Prop({ type: Date })
-  meetingTimes: Date[];
+  @Prop({ type: String })
+  meetingTimes: String[];
 
   @Prop({ type: Number })
   meetingLength: number;
