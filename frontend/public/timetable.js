@@ -44,13 +44,13 @@ function addMinutesToTime(timeString, minutesToAdd) {
 }
 
 // Array of course objects
-let courses = [
-  { name: "Mathematics", day: "Monday", start: "09:00", end: "11:00" },
-  { name: "English", day: "Tuesday", start: "10:00", end: "12:00" },
-  { name: "Science", day: "Wednesday", start: "09:30", end: "10:30" },
-  { name: "History", day: "Thursday", start: "11:00", end: "12:30" },
-  { name: "Physics", day: "Friday", start: "13:00", end: "15:00" },
-];
+// let courses = [
+//   { name: "Mathematics", day: "Monday", start: "09:00", end: "11:00" },
+//   { name: "English", day: "Tuesday", start: "10:00", end: "12:00" },
+//   { name: "Science", day: "Wednesday", start: "09:30", end: "10:30" },
+//   { name: "History", day: "Thursday", start: "11:00", end: "12:30" },
+//   { name: "Physics", day: "Friday", start: "13:00", end: "15:00" },
+// ];
 
 // Generate timetable rows
 async function generateTimetable() {
@@ -68,7 +68,7 @@ async function generateTimetable() {
       coursesData.push(courseData);
     }
   }
-  courses = [];
+  let courses = [];
   console.log(coursesData);
 
   for (const courseData of coursesData) {
