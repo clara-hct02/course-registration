@@ -6,18 +6,22 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>My Website</title>
     <link rel="stylesheet" href="style.css">
-    <script src="index.js"></script>
+    <script src="saved.js"></script>
     <script src="navbar.js" type="text/javascript" defer></script>
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
   </head>
   <body>
     <main>
         <navbar-component></navbar-component>
+        <div class="title">
+          <h1> Saved Schedules </h1>
+          <h2> (Student Name) </h2>
+        </div>
         <form id="choose-schedule">
           <label>Saved Schedule: </label>
           <select name="schedule" id="schedule-select">
           </select>
-          <button type="submit"> Submit </button>
+          <button type="submit">Submit</button>
         </form> 
         <br>
         <table id="timetable">
@@ -37,6 +41,8 @@
               <!-- Timetable rows will be generated dynamically -->
           </tbody>
         </table>
+        <br>
+        <button type="submit">Register All</button>
     </main>
   </body>
   
