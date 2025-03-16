@@ -1,10 +1,10 @@
 class Navbar extends HTMLElement {
-    constructor() {
-      super();
-    }
-  
-    connectedCallback() {
-      this.innerHTML = `
+  constructor() {
+    super();
+  }
+
+  connectedCallback() {
+    this.innerHTML = `
       <style>
         /* Add a black background color to the top navigation */
         .topnav {
@@ -100,9 +100,33 @@ class Navbar extends HTMLElement {
           <a href="saved.html">Saved Schedules</a>
           <a href="browse.html">Find Courses</a>
           <a href="navigator.html">Degree Navigator</a>
+          <a href="#" id="logoutLink">Logout</a>
         </div>
-      `
+
+      `;
+    setTimeout(() => {
+      // access deny if nothing in session storage
+      const cachedId = sessionStorage.getItem("id");
+      if (!cachedId) {
+        sessionStorage.clear();
+        window.location.href =
+          "http://127.0.0.1:3001/frontend/public/access-denied.html";
+      }
+      this.attachEventListeners();
+    }, 0);
+  }
+
+  attachEventListeners() {
+    const logoutLink = this.querySelector("#logoutLink");
+    if (logoutLink) {
+      logoutLink.addEventListener("click", this.logout.bind(this));
     }
   }
-  
-  customElements.define('navbar-component', Navbar);
+
+  logout() {
+    window.location.href = "login.html";
+    sessionStorage.clear();
+  }
+}
+
+customElements.define("navbar-component", Navbar);

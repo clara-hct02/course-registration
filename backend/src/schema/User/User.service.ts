@@ -20,11 +20,12 @@ export class UserService {
   }
 
   async findById(id: string): Promise<UserDocument | null> {
-    return this.userModel.findById(id).exec();
+    return this.userModel.findById(id).select('-password').exec();
   }
 
   async findByEmail(email: string): Promise<UserDocument | null> {
-    return this.userModel.findOne({ email }).exec();
+    var retr = await this.userModel.findOne({ email }).exec();
+    return retr;
   }
 
   async update(id: string, user: User): Promise<UserDocument | null> {
