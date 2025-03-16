@@ -33,6 +33,9 @@ export class Section {
   @Prop({ type: String })
   meetingTimes: String[];
 
+  @Prop({ type: String })
+  startTime: string;
+
   @Prop({ type: Number })
   meetingLength: number;
 }
