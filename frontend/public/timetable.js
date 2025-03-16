@@ -7,7 +7,7 @@ async function getRegisteredCourses(id) {
   return myobject;
 }
 
-async function getCourseDetails(id) {
+async function getSectionDetails(id) {
   const response = await fetch(`http://localhost:3000/sections/${id}`, {
     method: "GET",
   });
@@ -16,8 +16,35 @@ async function getCourseDetails(id) {
   return myobject;
 }
 
+async function getCourseMetaDetails(id) {
+  const response = await fetch(`http://localhost:3000/courses/${id}`, {
+    method: "GET",
+  });
+
+  const myobject = await response.json();
+  return myobject;
+}
+
+function addMinutesToTime(timeString, minutesToAdd) {
+  // Split the time string into hours and minutes
+  const [hours, minutes] = timeString.split(":").map(Number);
+
+  // Calculate the total minutes
+  let totalMinutes = hours * 60 + minutes + minutesToAdd;
+
+  // Calculate the new hours and minutes
+  const newHours = Math.floor(totalMinutes / 60) % 24;
+  const newMinutes = totalMinutes % 60;
+
+  // Format the new hours and minutes as a string
+  const formattedHours = String(newHours).padStart(2, "0");
+  const formattedMinutes = String(newMinutes).padStart(2, "0");
+
+  return `${formattedHours}:${formattedMinutes}`;
+}
+
 // Array of course objects
-const courses = [
+let courses = [
   { name: "Mathematics", day: "Monday", start: "09:00", end: "11:00" },
   { name: "English", day: "Tuesday", start: "10:00", end: "12:00" },
   { name: "Science", day: "Wednesday", start: "09:30", end: "10:30" },
@@ -33,12 +60,27 @@ async function generateTimetable() {
   let arr = JSON.parse(sessionStorage.getItem("registrations"));
   let reg = await getRegisteredCourses(arr[0]);
   let courseIds = reg["courses"];
-  let courses = [];
+  let coursesData = [];
   for (const courseId of courseIds) {
     console.log(courseId);
-    courseData = await getCourseDetails(courseId);
+    courseData = await getSectionDetails(courseId);
     if (courseData) {
-      courses.push(courseData);
+      coursesData.push(courseData);
+    }
+  }
+  courses = [];
+  console.log(coursesData);
+
+  for (const courseData of coursesData) {
+    for (const meetingDay of courseData.meetingTimes) {
+      const courseDetails = await getCourseMetaDetails(courseData.course);
+      const courseInstance = {
+        name: `${courseDetails.dept} ${courseDetails.courseCode} ${courseData.sectionCode}`,
+        day: meetingDay,
+        start: courseData.startTime,
+        end: addMinutesToTime(courseData.startTime, courseData.meetingLength),
+      };
+      courses.push(courseInstance);
     }
   }
 

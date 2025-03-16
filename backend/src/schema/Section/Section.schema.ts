@@ -27,10 +27,10 @@ export class Section {
   @Prop({ type: Boolean })
   waitlist: boolean;
 
-  @Prop({ type: String })
+  @Prop({ type: [String] })
   prof: string[];
 
-  @Prop({ type: String })
+  @Prop({ type: [String] })
   meetingTimes: String[];
 
   @Prop({ type: String })
