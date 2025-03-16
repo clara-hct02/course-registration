@@ -1,16 +1,16 @@
 // user.controller.ts
 
 import {
-    Controller,
-    Get,
-    Post,
-    Body,
-    Param,
-    Put,
-    Delete,
+  Controller,
+  Get,
+  Post,
+  Body,
+  Param,
+  Put,
+  Delete,
 } from '@nestjs/common';
 import { UserService } from './User.service';
-import {User, UserDocument} from './User.schema';
+import { User, UserDocument } from './User.schema';
 
 @Controller('users')
 export class UserController {
@@ -46,13 +46,16 @@ export class UserController {
     return this.userService.remove(id);
   }
 
-  @Post()
+  @Post('login')
   async login(@Body() loginInfo: Object): Promise<UserDocument | null> {
-    if (Object.keys(loginInfo).includes("email") && Object.keys(loginInfo).includes("password")) {
-        var document = await this.userService.findByEmail(loginInfo["email"]);
-        if (document && document.password == loginInfo["password"]) {
-            return document;
-        }
+    if (
+      Object.keys(loginInfo).includes('email') &&
+      Object.keys(loginInfo).includes('password')
+    ) {
+      var document = await this.userService.findByEmail(loginInfo['email']);
+      if (document && document.password == loginInfo['password']) {
+        return await this.userService.findById(document.id);
+      }
     }
     return null;
   }
