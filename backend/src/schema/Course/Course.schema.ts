@@ -13,6 +13,9 @@ export class Course {
 
   @Prop({ type: String })
   courseCode: string;
+
+  @Prop({ type: String })
+  description: string;
 }
 
 export const CourseSchema = SchemaFactory.createForClass(Course);
