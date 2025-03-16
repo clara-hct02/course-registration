@@ -105,6 +105,13 @@ class Navbar extends HTMLElement {
 
       `;
     setTimeout(() => {
+      // access deny if nothing in session storage
+      const cachedId = sessionStorage.getItem("id");
+      if (!cachedId) {
+        sessionStorage.clear();
+        window.location.href =
+          "http://127.0.0.1:3001/frontend/public/access-denied.html";
+      }
       this.attachEventListeners();
     }, 0);
   }
