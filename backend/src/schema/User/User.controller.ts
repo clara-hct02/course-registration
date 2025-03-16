@@ -8,6 +8,8 @@ import {
   Param,
   Put,
   Delete,
+  HttpException,
+  HttpStatus,
 } from '@nestjs/common';
 import { UserService } from './User.service';
 import { User, UserDocument } from './User.schema';
@@ -56,7 +58,8 @@ export class UserController {
       if (document && document.password == loginInfo['password']) {
         return await this.userService.findById(document.id);
       }
+      throw new HttpException('Incorrect Password', HttpStatus.FORBIDDEN);
     }
-    return null;
+    throw new HttpException('User not found', HttpStatus.BAD_REQUEST);
   }
 }
