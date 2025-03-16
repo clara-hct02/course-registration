@@ -110,3 +110,19 @@ worklistSelectButton.addEventListener('click', () => {
 
 testCourseDisplay(sampleData);
 worklistOptionDisplay(currentWorklists);
+
+async function getUsers(){
+    try{
+      const response = await fetch('http://localhost:3000/users');
+  
+      if(!response.ok){
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      console.log(data);
+    } catch(error){
+      console.error('Fetch Error:', error);
+    }
+  }
+  
+  getUsers();
