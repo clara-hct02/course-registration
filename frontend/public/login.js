@@ -21,6 +21,7 @@ async function login(event) {
       JSON.stringify(data["registrations"])
     );
     sessionStorage.setItem("worklists", JSON.stringify(data["worklists"]));
+    window.location.href = "http://127.0.0.1:3001/frontend/public/index.html";
   } else {
     // do nothing
   }
