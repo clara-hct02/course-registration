@@ -29,6 +29,12 @@ export class Section {
 
   @Prop({ type: String })
   prof: string[];
+
+  @Prop({ type: Date })
+  meetingTimes: Date[];
+
+  @Prop({ type: Number })
+  meetingLength: number;
 }
 
 export const SectionSchema = SchemaFactory.createForClass(Section);
